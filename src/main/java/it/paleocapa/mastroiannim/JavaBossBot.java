@@ -57,5 +57,33 @@ public class JavaBossBot extends TelegramLongPollingBot {
 				LOG.error(e.getMessage());
 			}
 		}
+
+		String command = update.getMessage().getText();
+
+        if (command.equals("/run")){
+            String message = "What do you want to ask?";
+            SendMessage response = new SendMessage();
+            response.setChatId(update.getMessage().getChatId().toString());
+            response.setText(message);
+
+            try{
+                execute(response);
+            }catch(TelegramApiException e){
+                e.printStackTrace();
+            }
+        }
+
+        if (command.equals("Who's the goat?")){
+            String message = "Absolutely MJ23";
+            SendMessage response = new SendMessage();
+            response.setChatId(update.getMessage().getChatId().toString());
+            response.setText(message);
+
+            try{
+                execute(response);
+            }catch(TelegramApiException e){
+                e.printStackTrace();
+            }
+        }
 	}
 }
